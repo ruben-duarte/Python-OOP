@@ -50,7 +50,30 @@ class Item:
        
 
    def __repr__(self):
-       return f"Item('{self.name}', {self.price}, {self.quantity})"
+       return f"{self.__class__.__name__}('{self.name}', {self.price}, {self.quantity})"
+
+#inherit from Item
+class Phone(Item):
+  
+      def __init__(self,name: str, price: float , quantity=0, broken_phones = 0):
+        #call to super function to have access to all atributes and methods
+        super().__init__(
+            name, price, quantity
+        )
+        #Run validations to the received arguments
+        assert broken_phones >= 0, f"broken phones {broken_phones} is not greater or equal to zero" 
+
+        #assign to the self object
+
+        self.broken_phones = broken_phones
+
+    
 
 
-print(Item.is_integer(7.0))
+
+phone1 = Phone('JscPhone10',500, 5,1)
+
+print(Item.all)
+print(Phone.all)
+
+
